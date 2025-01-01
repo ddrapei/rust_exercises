@@ -1,3 +1,5 @@
+use std::fs::File;
+
 fn main() {
     // arrays and their slices
     let arr: [i8; 5] = [1, 2, 3, 4, 5];
@@ -99,6 +101,25 @@ fn main() {
         }
         println!("The even numbers until 10 are: {}", num);
     }
+
+    // error handling
+    let file = File::open("non-existent.txt");
+
+    match file {
+        Ok(_file) => {
+            println!("Opened a file");
+        },
+        Err(error) => {
+            println!("Cannot open the file: {error}");
+        }
+    }
+
+    // binary search
+    let vector = vec![1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12];
+    match binary_search(&vector, 6) {
+        Some(index) => println!("The number was found under the index {}", index),
+        None => println!("The number is not on the list")
+    }
 }
 
 
@@ -114,4 +135,26 @@ fn multiplication (a: i32, b:i32) -> i32 {
 
 fn multiplication_and_addition (a:i32, b:i32) -> (i32, i32) {
     (a+b, a*b)
+}
+
+
+//binary search function
+fn binary_search (vec: &[i32], target: i32) -> Option<usize> {
+    let mut low = 0;
+    let mut high = vec.len() - 1;
+
+    while low <= high {
+        
+        let mid = (low + high) / 2;
+        let guess = vec[mid];
+
+        if guess == target{
+            return Some(mid)
+        } else if guess >= target {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    None
 }
