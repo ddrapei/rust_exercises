@@ -120,6 +120,22 @@ fn main() {
         Some(index) => println!("The number was found under the index {}", index),
         None => println!("The number is not on the list")
     }
+
+    // mutable borrowing
+
+    let mut x = 5;
+    println!("Before mutable borrowing, x: {}", x);
+    let y = &mut x;
+
+    *y = 10;
+    println!("x: {}", x);
+
+    // immutable borrowing
+    let x = 5;
+    let y = &x;
+    println!("x: {}", x);
+    println!("y: {}", y);
+
 }
 
 
