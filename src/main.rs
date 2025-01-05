@@ -220,6 +220,12 @@ fn main() {
     for shape in shapes {
         shape.draw();
     }
+
+    // generic functions
+    let unsorted_number = [1, 5, 29, 2, 0, -5, -99, 129, 24, 8, 1, 924, -57283];
+    let largest_number = largest(&unsorted_number);
+
+    println!("The largest number in the array: {}", largest_number);
 }
 
 
@@ -238,7 +244,7 @@ fn multiplication_and_addition (a:i32, b:i32) -> (i32, i32) {
 }
 
 
-//binary search function
+// binary search function
 fn binary_search (vec: &[i32], target: i32) -> Option<usize> {
     let mut low = 0;
     let mut high = vec.len() - 1;
@@ -258,3 +264,17 @@ fn binary_search (vec: &[i32], target: i32) -> Option<usize> {
     }
     None
 }
+
+// generic functions
+
+fn largest<T: PartialOrd> (list: &[T]) -> &T {
+    let mut largest = &list[0];
+
+    for item in list.iter() {
+        if item > largest {
+            largest = item;
+        }   
+    }
+largest
+} 
+
