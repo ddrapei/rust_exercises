@@ -55,6 +55,19 @@ impl Draw for Square {
     }
 }
 
+// generic methods
+
+struct Point <T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Point<T> {
+    fn new (x: T, y: T) -> Self {
+        Self {x, y}
+    }
+}
+
 fn main() {
     // arrays and their slices
     let arr: [i8; 5] = [1, 2, 3, 4, 5];
@@ -226,6 +239,16 @@ fn main() {
     let largest_number = largest(&unsorted_number);
 
     println!("The largest number in the array: {}", largest_number);
+
+    // generic methods
+    let random_point = Point::new(10, 7);
+    let int_point = Point {x: 5, y: 10};
+    let float_point = Point {x: 7.5, y: 15.00};
+
+    println!("Different points from the same struct with generic type: 
+    random point: ({}, {}), 
+    integer point: ({}, {}),
+    float point: ({}, {})", random_point.x, random_point.y, int_point.x, int_point.y, float_point.x, float_point.y);
 }
 
 
