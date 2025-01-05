@@ -1,5 +1,60 @@
 use std::fs::File;
 
+// traits
+trait Animal {
+    fn  make_sound(&self);
+}
+
+struct Dog;
+struct Cat;
+
+impl Animal for Dog {
+    fn make_sound (&self) {
+        println!("Bark");
+    }
+}
+
+impl Animal for Cat {
+    fn make_sound(&self) {
+        println!("Meow");
+    }
+}
+
+trait Summarisible {
+    fn summary (&self) -> String;
+} 
+
+struct Novel {
+    title: String,
+    author: String
+}
+
+impl Summarisible for Novel {
+    fn summary (&self) -> String {
+        format!("{}: {}", self.title, self.author)
+    }
+}
+
+trait Draw {
+    fn draw(&self);
+}
+
+struct Circle;
+
+impl Draw for Circle {
+    fn draw(&self){
+        println!("Drawing a circle");
+    }
+}
+
+struct Square;
+
+impl Draw for Square {
+    fn draw(&self) {
+        println!("Drawing a square");
+    }
+}
+
 fn main() {
     // arrays and their slices
     let arr: [i8; 5] = [1, 2, 3, 4, 5];
@@ -136,6 +191,35 @@ fn main() {
     println!("x: {}", x);
     println!("y: {}", y);
 
+    // traits
+
+    let dog = Dog;
+    dog.make_sound();
+    let cat = Cat;
+    cat.make_sound();
+
+    let animals: Vec<&dyn Animal> = vec![&dog, &cat];
+
+    for animal in animals {
+        animal.make_sound();
+    }
+
+    let novel = Novel {
+        title: String::from("Harry Potter"),
+        author: String::from("J.K. Rowling")
+    };
+
+    println!("{}", novel.summary());
+
+
+    let shapes: Vec<Box<dyn Draw>> = vec![
+        Box::new(Circle),
+        Box::new(Square)
+    ];
+
+    for shape in shapes {
+        shape.draw();
+    }
 }
 
 
