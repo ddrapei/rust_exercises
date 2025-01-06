@@ -249,6 +249,30 @@ fn main() {
     random point: ({}, {}), 
     integer point: ({}, {}),
     float point: ({}, {})", random_point.x, random_point.y, int_point.x, int_point.y, float_point.x, float_point.y);
+
+    // nested loops and named loops
+
+    let mut counting_number = 0;
+
+    'counting_loop: loop {
+        println!("Counter {}", counting_number);
+        let mut remainder = 10;
+        counting_number += 1;
+        loop {
+            println!("Remainder: {}", remainder);
+
+            if remainder == 9 {
+                break;
+            } 
+
+            if counting_number == 10 {
+                break 'counting_loop;
+            }
+
+            remainder -= 1;
+        }
+
+    }
 }
 
 
