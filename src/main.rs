@@ -273,6 +273,11 @@ fn main() {
         }
 
     }
+
+    // Function that returns 2 variables:
+
+    string_length("I love Rust".to_string());
+
 }
 
 
@@ -324,4 +329,12 @@ fn largest<T: PartialOrd> (list: &[T]) -> &T {
     }
 largest
 } 
+
+// function that returns multiple values in a tuple
+
+fn string_length (s: String) -> (String, usize) {
+    let length = s.len();
+    println!("The string is '{}', the length of the string is {} characters", s, length);
+    (s, length)
+}
 
