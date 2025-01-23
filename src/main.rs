@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::collections::HashMap;
 
 // traits
 trait Animal {
@@ -277,6 +278,15 @@ fn main() {
     // Function that returns 2 variables:
 
     string_length("I love Rust".to_string());
+
+    // HashMap examples
+
+    let mut scores: HashMap<String, i32> = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Green"), 50);
+
+    println!("{:?}", scores);
 
 }
 
