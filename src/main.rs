@@ -295,18 +295,9 @@ fn main() {
     let slice = &string_hello[0..5];
     println!("{slice}"); 
 
-    // creating and pushing to vector
-    let mut numbers :Vec<i32> = Vec::new();
-
-    numbers.push(1);
-    numbers.push(2);
-    numbers.push(3);
-
-    println!("The elements of the vector are:");
-    for number in &numbers {
-        println!("{}", number);
-    }
+    print_vectors();
 }
+
 
 
 // functions
@@ -364,6 +355,70 @@ fn string_length (s: String) -> (String, usize) {
     let length = s.len();
     println!("The string is '{}', the length of the string is {} characters", s, length);
     (s, length)
+}
+
+// print vectors functions
+
+fn print_vectors(){
+    // creating and pushing to vector
+    let mut numbers :Vec<i32> = Vec::new();
+
+    numbers.push(1);
+    numbers.push(2);
+    numbers.push(3);
+
+    println!("The elements of the vector are:");
+    for number in &numbers {
+        println!("{}", number);
+    };
+
+    numbers[0] = 0;
+
+    println!("The elements of the modified vector are:");
+    for number in &numbers {
+        println!("{}", number);
+    };
+
+    numbers.remove(1);
+
+    println!("The elements after removing the second element:");
+    for number in &numbers {
+        println!("{}", number);
+    };
+
+    numbers.pop();
+
+    println!("The elements after removing the last element:");
+    for number in &numbers {
+        println!("{}", number);
+    };
+
+    numbers.insert(0, 144);
+    println!("The elements after rinserting at 0 position:");
+    for number in &numbers {
+        println!("{}", number);
+    };
+
+
+    // different ways to create vectors
+
+    // using Vec::new();
+    let vec1: Vec<i32> = Vec::new();
+
+    // sing vec macro
+    let vec_macro:Vec<i32> = vec![10, 20, 32, 44, 59];
+
+    // using default values
+    let vec_default_values:Vec<i32> = vec![0; 4];
+
+    // printing results
+    println!("vec 1: {:?}", vec1);
+    println!("vec_macro: {:?}", vec_macro);
+    println!("vec_default_values: {:?}", vec_default_values);
+
+    // slicing a vector
+    let slice = &vec_macro[1..3];
+    println!("slice: {:?}", slice);
 }
 
 
