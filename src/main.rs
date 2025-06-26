@@ -295,7 +295,7 @@ fn main() {
     let slice = &string_hello[0..5];
     println!("{slice}"); 
 
-    // vectors
+    // creating and pushing to vector
     let mut numbers :Vec<i32> = Vec::new();
 
     numbers.push(1);
