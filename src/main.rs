@@ -288,6 +288,24 @@ fn main() {
 
     println!("{:?}", scores);
 
+    // string slice example
+
+    let string_hello = "hello world";
+
+    let slice = &string_hello[0..5];
+    println!("{slice}"); 
+
+    // vectors
+    let mut numbers :Vec<i32> = Vec::new();
+
+    numbers.push(1);
+    numbers.push(2);
+    numbers.push(3);
+
+    println!("The elements of the vector are:");
+    for number in &numbers {
+        println!("{}", number);
+    }
 }
 
 
@@ -347,4 +365,6 @@ fn string_length (s: String) -> (String, usize) {
     println!("The string is '{}', the length of the string is {} characters", s, length);
     (s, length)
 }
+
+
 
