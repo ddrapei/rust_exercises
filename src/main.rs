@@ -405,7 +405,7 @@ fn print_vectors(){
     // using Vec::new();
     let vec1: Vec<i32> = Vec::new();
 
-    // sing vec macro
+    // using vec macro
     let vec_macro:Vec<i32> = vec![10, 20, 32, 44, 59];
 
     // using default values
