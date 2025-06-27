@@ -1,5 +1,6 @@
 use std::fs::File;
 use std::collections::HashMap;
+use std::path::Component::ParentDir;
 
 // traits
 trait Animal {
@@ -296,6 +297,10 @@ fn main() {
     println!("{slice}"); 
 
     print_vectors();
+
+    printing_arrays();
+
+    printing_strings();
 }
 
 
@@ -424,6 +429,26 @@ fn print_vectors(){
 
     let mut vector_before_splitting: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+    for element in vector_before_splitting.iter(){
+        println!("{:?}", element);
+    }
+
+    for element in vector_before_splitting.iter_mut(){
+        *element +=1;
+        println!("{:?}", element);
+    }
+
+    for element in vector_before_splitting.iter(){
+        println!("{:?}", element);
+    }
+
+    for element in vector_before_splitting.iter_mut(){
+        *element -=1;
+        println!("{:?}", element);
+    }
+
+    println!{"{:?}", vector_before_splitting};
+
     println!("The vector before completion: {:?}", vector_before_splitting);
 
     let (vector_after_first_split_1, vector_after_first_split_2) = vector_before_splitting.split_at(5);
@@ -435,5 +460,53 @@ fn print_vectors(){
     println!("Vector after second split at 3: {:?}", vector_after_second_split);
 }
 
+// array practice
+
+fn printing_arrays() {
+    let gfx_cameras: [&str; 8] = ["GFX100", "GFX50R", "GFX50S", "GFX50S II", "GFX100s", "GFX100s II", "GFX100 II", "GFX100 RF"];
+
+    println!("{:?}", gfx_cameras);
+
+    for camera in gfx_cameras.iter(){
+        println!("{:?}", camera);
+    }
+
+    println!("{:?}", gfx_cameras[1]);
+
+    let matrix: [[i32; 3]; 2] = [
+        [4, 100, 200],
+        [2, 23, 19]
+    ];
+
+    println!("{:?}", matrix);
+
+    let slice = &gfx_cameras[2..5];
+    println!("{:?}", slice);
+    println!("The lenght of the slice is: {:?}", slice.len());
+    println!("The last element of slice is: {:?}", slice.last().unwrap());
+    println!("The first element of slice is: {:?}", slice.first().unwrap());
+
+    match slice.first() {
+        Some (value) => println!("There is the first element in a slice: {:?}", value),
+        None => println!("There is no first element in the slice")
+    }
+}
+
+
+// string practise
+fn printing_strings(){
+    let string: &str = "Hello, World";
+    println!("{}", string);
+
+    let owned_string = String::from("Hello, World");
+    println!("{}", owned_string);
+
+    let number = 234;
+    let str_number = number.to_string();
+    println!("{}", str_number);
+
+    let s = "Hello, Rust!";
+    println!("Length in bytes: {}", s.len());
+}
 
 
