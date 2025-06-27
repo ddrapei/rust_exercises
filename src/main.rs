@@ -419,6 +419,20 @@ fn print_vectors(){
     // slicing a vector
     let slice = &vec_macro[1..3];
     println!("slice: {:?}", slice);
+
+    // splitting a vector
+
+    let mut vector_before_splitting: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    println!("The vector before completion: {:?}", vector_before_splitting);
+
+    let (vector_after_first_split_1, vector_after_first_split_2) = vector_before_splitting.split_at(5);
+
+    println!("First part of the vector after splitting at 5: {:?}", vector_after_first_split_1);
+    println!("Second part of the vector after splitting at 5: {:?}", vector_after_first_split_2);
+
+    let vector_after_second_split: Vec<&[i32]> = vector_after_first_split_1.split(|&x| x == 3).collect();
+    println!("Vector after second split at 3: {:?}", vector_after_second_split);
 }
 
 
