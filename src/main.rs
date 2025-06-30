@@ -1,3 +1,5 @@
+mod concurrency;
+
 use std::fs::File;
 use std::collections::HashMap;
 use std::path::Component::ParentDir;
@@ -301,6 +303,8 @@ fn main() {
     printing_arrays();
 
     printing_strings();
+
+    concurrency::concurrency();
 }
 
 
